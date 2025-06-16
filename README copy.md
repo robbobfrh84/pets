@@ -1,6 +1,3 @@
-# pets
-Basic development flow for a headless frontend react app with node, express, postgreSQL hosted on render.com
-
 # Setup
 - `npm init -y` (yes to all Qs)
 - `touch index.js`
@@ -9,3 +6,5 @@ Basic development flow for a headless frontend react app with node, express, pos
 # Setup nodemon
 - `npm install -g nodemon`
 
+# Restful routing
+- 
