@@ -18,8 +18,12 @@ router.get('/pets', async (req, res) => {
 })
 
 // * 🎯 GET a single pet by pet's id
+
 // * 📫 POST - Create a new pet 
+
 // * 🎊 PUT - update a pet's value
+
 // * ❌ DELETE a pet by Id
+
 
 module.exports = router
