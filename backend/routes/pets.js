@@ -21,7 +21,7 @@ router.get('/pets', async (req, res) => {
 })
 
 // * 🎯 GET a single pet by pet's id
-app.get('/pets/:petId', async (req, res) => {  
+router.get('/pets/:petId', async (req, res) => {  
   console.log("🎯 GET a single pet by pet's id")
   const { petId } = req.params;
   try {

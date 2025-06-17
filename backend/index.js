@@ -5,9 +5,12 @@ const PORT = 3000;
 
 const { PrismaClient } = require('./generated/prisma');
 const prisma = new PrismaClient();
+const pets = require('./routes/pets.js');
 
 app.use(express.json()); // * Converts request body's to json
 app.use(express.static(path.join(__dirname, 'public'))); // * Serve static files from the 'public' folder
+
+app.use("/", pets);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
@@ -31,11 +34,11 @@ app.get('/json', (req, res) => {
   res.json({ name:'Sal', number: 49 });
 })
 
-let { pets } = require('./petsJson.json'); // (🚨HARDCODED Pets Object)
+let petsJson = require('./petsJson.json'); // (🚨HARDCODED Pets Object)
 app.get('/pets_filter', (req, res) => {    
   const { query } = req;
   const key = Object.keys(query)[0];
   const value = query[key];
-  const matchingPets = pets.filter(pet => pet[key] == value);
+  const matchingPets = petsJson.pets.filter(pet => pet[key] == value);
   res.json(matchingPets);
 })
