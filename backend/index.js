@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 })
 
 
-/* 📬 ... 📬 Example Requests 📬 ... 📬 */
+/* 📬  ...  📬 Example Requests 📬  ...  📬 */
 
 // * TEXT Response
 app.get('/', (req, res) => {
