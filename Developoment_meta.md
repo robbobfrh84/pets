@@ -1,4 +1,4 @@
-# Setup
+# Setup for Pets App (Starting from Week 1 Lab 1 to deployment)
 - Prerequisites: VS Code, node, npm.
   - `node --version` > v22.16.0
   - `npm --version` > 10.9.2
@@ -43,12 +43,50 @@ Lab 3:
 - Setup Prisma
    - `cd` into your project backend (must already have `npm init -y` at min.)
    - `npm install prisma --save-dev`
+   - Open the `.env` file created by Prisma. Locate the DATABASE_URL variable and configure it with your PostgreSQL connection details: 
+   - Change to your variables: `> POSTGRES_URL="postgresql://postgres:<password>@postgres:5432/<db_name>?schema=public"`
+     - My Example: `DATABASE_URL="postgresql://postgres:okokok@localhost:5432/kudos?schema=public"`
+- Add Schemea
+- Migrate
+  - `npx prisma migrate dev --name init_pets_table` (NOTE pets here is the pets db you made in prisma earlier)
+    - `y`
+  - When i first did this, I had the toys model noted out. 
+- Lunch Prisma by running `npx prisma studio`
+- Use Prisma browser to test by adding one record. NEED For testing `/pets`
+- Hook up to DB, rather than pets.json
+  - Added (THIS WAS the thing that was originally `require('@prisma/client')`)
+    ```javascript
+      const { PrismaClient } = require('./generated/prisma');
+      const prisma = new PrismaClient();
+    ```
+- `nodemon index.js` 
+  - ERROR!!!! got the sae issue with prisma. changed to `../generated/prisma` because i'm a level above now.
+- `nodemon index.js` ✅
+
+🙀 Need to change pgAdmin password (See folder of screenshots)
+- Open pgAdmin > Server > PostgreSQL 17 > Login/group roles > posgres (Or whatever name is in your POSTGRESQL_URL)
+- Right click posgres > Properties > Select the Definitio Tab. 
+- Now add your new password and update the POSTGRESQL_URL in .env
+
+
+# Development
+
+Everything setup and installed? (No? Jump to "# Setup for Pets App ")
+- Open 3 seperate Terminal tabs or windows & `cd` to into folders: 
+  - frontend: `npm run dev` (Might not be implimented yet)
+  - backend: `node index.js` (or `nodemon index.js` for hot reload)
+  - backend: `npx prisma studio` (DB table views, or open pgAdmin)
+
+To generate a migration (or update if changes are made):
+- `npx prisma migrate dev --name init`
+
+### Seeding (😱 NOTE! It's gonna wipe all your data!)
+- `node prisma/seed_pets.json`
 
 
 # Deployment
-- render.com > Log in > Dashbaord (dashboard.render.com)
-- 🚨 My initial project expired (they said suspended)
-- So, going through the same process, but adding `2` to all the projects, names, etc.
+-
+
 
 # Setting up Kudos (Air) to develop on Meta Mac
 - Clone repo.
