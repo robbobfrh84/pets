@@ -5,9 +5,11 @@ const { PrismaClient } = require('../generated/prisma');
 const prisma = new PrismaClient();
 
 
-// * 🗂️ GET all pets
+// * 🗂️🗂️🗂️ GET all pets
 router.get('/pets', async (req, res) => { 
+
   console.log('🗂️🗂️🗂️ GET all /pets')
+
   try {
     const pets = await prisma.pet.findMany();
     res.status(200).json({ pets });
@@ -15,7 +17,9 @@ router.get('/pets', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
+
 })
+
 
 // * 🎯 GET a single pet by pet's id
 
