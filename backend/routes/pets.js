@@ -20,8 +20,25 @@ router.get('/pets', async (req, res) => {
 
 })
 
-
 // * 🎯 GET a single pet by pet's id
+app.get('/pets/:petId', async (req, res) => {  
+  console.log("🎯 GET a single pet by pet's id")
+  const { petId } = req.params;
+  try {
+    const pet = await prisma.pet.findUnique({
+      where: { pet_id: parseInt(petId) },
+    });
+    if (!pet) {
+      res.status(404).json({ error: 'Pet not found' });
+      return;
+    }
+    res.status(200).json({ pet });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
+
 
 // * 📫 POST - Create a new pet 
 
