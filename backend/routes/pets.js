@@ -5,7 +5,7 @@ const { PrismaClient } = require('../generated/prisma');
 const prisma = new PrismaClient();
 
 
-// * 🗂️🗂️🗂️ GET all pets
+/* 🗂️ GET all pets 🐰 */
 router.get('/pets', async (req, res) => { 
   console.log('🗂️🗂️🗂️ GET all /pets')
   try {
@@ -18,9 +18,9 @@ router.get('/pets', async (req, res) => {
 
 })
 
-// * 📫 POST - Create a new pet 
+/* 📫 POST - Create a new pet 🐰 */
 router.post('/pets', async (req, res) => {
-  console.log("📫 POST - Create a new pet");
+  console.log("📫 POST - Create a new pet 🐰");
   try {
     const newPet = await prisma.pet.create({
       data: { ...req.body }
@@ -32,9 +32,9 @@ router.post('/pets', async (req, res) => {
   }
 });
 
-// * 🎯 GET a single pet by pet's id
+/* 📄 GET a single pet by pet's id 🐰 */
 router.get('/pets/:petId', async (req, res) => {  
-  console.log("🎯 GET a single pet by pet's id")
+  console.log("🎯 GET a single pet by pet's id 🐰")
   const { petId } = req.params;
   try {
     const pet = await prisma.pet.findUnique({
@@ -52,9 +52,9 @@ router.get('/pets/:petId', async (req, res) => {
   }
 })
 
-// * ❌ DELETE a pet by Id
+/* ❌ DELETE a pet by Id 🐰 */
 router.delete('/pets/:petId', async (req, res) => {
-  console.log("❌ DELETE a pet by Id");
+  console.log("❌ DELETE a pet by Id 🐰");
   const { petId } = req.params;
   try {
     await prisma.toy.deleteMany({ where: { pet_id: parseInt(petId) } });
@@ -70,9 +70,9 @@ router.delete('/pets/:petId', async (req, res) => {
 });
 
 
-// * 📫 POST - Create a new toy by pet ID. 
+/* 📫 POST - Create a new toy by pet ID. 🦴 */
 router.post('/pets/:petId/toys', async (req, res) => {
-  console.log("📫 POST - Create a new toy by pet ID");
+  console.log("📫 POST - Create a new toy by pet ID 🦴");
   const { petId } = req.params;
   const { name, likes } = req.body;
   try {
@@ -92,9 +92,9 @@ router.post('/pets/:petId/toys', async (req, res) => {
 });
 
 
-// * 🛠️ PUT - update a pet's value
+/* 🛠️ PUT - update a toys's value 🦴 */
 router.put('/toys/:toyId', async (req, res) => {
-  console.log("🛠️ PUT - Update a toy's 'likes'");
+  console.log("🛠️ PUT - Update a toy's 'likes' 🦴");
   const { toyId } = req.params;
   try {
     const updatedToy = await prisma.toy.update({
@@ -111,9 +111,9 @@ router.put('/toys/:toyId', async (req, res) => {
   }
 });
 
-// * ❌ DELETE a toy by Id
+/* ❌ DELETE a toy by Id 🦴 */
 router.delete('/toys/:toyId', async (req, res) => {
-  console.log("❌ DELETE a toy by Id");
+  console.log("❌ DELETE a toy by Id 🦴");
   const { toyId } = req.params;
   try {
     await prisma.toy.delete({ where: { toy_id: parseInt(toyId) } });

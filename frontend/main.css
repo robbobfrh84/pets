@@ -97,7 +97,9 @@ h3 {
 }
 
 .toy-list {
+  margin-top: 5px;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -105,7 +107,7 @@ h3 {
   padding: 0.5rem 1rem;
   background-color: #f4f4f4;
   border-radius: 0.25rem;
-  max-width: 150px;
+  width: 150px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
