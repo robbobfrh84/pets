@@ -86,6 +86,32 @@ To generate a migration (or update if changes are made):
 
 # Deployment
 
+Raw notes of michelle's demo
+- npm install; npx prisma migrate deploy; npx prisma generate
+- node index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Postgres DB
 Start here: https://dashboard.render.com/
 - Click [+ Add new]
