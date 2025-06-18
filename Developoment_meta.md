@@ -81,12 +81,58 @@ To generate a migration (or update if changes are made):
 - `npx prisma migrate dev --name init`
 
 ### Seeding (😱 NOTE! It's gonna wipe all your data!)
-- `node prisma/seed_pets.json`
+- `node prisma/seed_pets.js`
 
 
 # Deployment
--
 
+### Postgres DB
+Start here: https://dashboard.render.com/
+- Click [+ Add new]
+  - Dropdown: Select: [postgres]
+- Name: myapp-db (*you can do whatever)
+- Project: *Leave empty*
+- Database: *Leave empty*
+- User: *Leave empty*
+- Region: I selected Oregon US West
+- PostgreSQL Version: 14
+  - In Terminal run: `PostgreSQL Version` to get your version.
+- Datadog API Key: *Leave empty*
+- Datadog Region: *Leave empty*
+- Plan Options: Free Basic. 
+
+Click > [Create Database]
+
+Get DATABASE_URL
+- With the Info tab open, find the Connect dropdown 
+- Copy the "Internal" URL
+
+Update your DATABASE_URL
+- In your code, find the `.env` file.
+- Note out your local value for DATABASE_URL (You'll wanna save that)
+- Now, add your new url: `DATABASE_URL="<your new URL here>"`
+
+NOTE: This will not work when you try and run it locally!
+
+### Node JS Server
+Start here: https://dashboard.render.com/
+- Click [+ Add new]
+  - Dropdown: Select: [postgres]
+- Connect your GitHub repo and pick your Node project
+- Name: myapp-api (*you can do whatever)
+- Language: Node
+- Branch: main 
+- Region: *should hopefully be already set to what you chose for DB*
+- Root Directory: backend (Leave black if package.json is at root level of your repo)
+- Build Command: npm install
+- Start Command: npm start (or node index.js)
+- Instance Type: Free
+- Environment Variables: Add your `DATABASE_URL` as the key and then the value as the URL you got from PostGres DB setup.
+
+Click > [Deploy Web Service]
+
+Error on build ? (See more notes from kudos)
+- When building the Web Service I got a long crypic error. 
 
 # Setting up Kudos (Air) to develop on Meta Mac
 - Clone repo.
