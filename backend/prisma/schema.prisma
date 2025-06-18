@@ -20,23 +20,20 @@ model pet {
   pet_id      Int         @id @default(autoincrement())
   name        String?
   type        String?
-  breed       String?
   age         Int?
-  description String?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime?   @updatedAt
-  // toys        toy[]
+  toys        toy[]
 }
 
-// model toy {
-//   toy_id      Int       @id @default(autoincrement())
-//   title       String?
-//   gif         String?
-//   votes       Int?      @default(0)
-//   createdAt   DateTime  @default(now())
-//   updatedAt   DateTime? @updatedAt
-//   pet         pet?      @relation(fields: [pet_id], references: [pet_id])
-//   pet_id      Int?
-// }
+model toy {
+  toy_id      Int         @id @default(autoincrement())
+  name        String?
+  likes       Boolean?    @default(false)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime?   @updatedAt
+  pet         pet?        @relation(fields: [pet_id], references: [pet_id])
+  pet_id      Int?
+}
 
 

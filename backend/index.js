@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path'); // * Allows us to serve html files. 
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
@@ -7,6 +8,7 @@ const { PrismaClient } = require('./generated/prisma');
 const prisma = new PrismaClient();
 const pets = require('./routes/pets.js');
 
+app.use(cors()); // 👈 allow all origins by default
 app.use(express.json()); // * Converts request body's to json
 app.use(express.static(path.join(__dirname, 'public'))); // * Serve static files from the 'public' folder
 
