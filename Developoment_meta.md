@@ -86,14 +86,15 @@ To generate a migration (or update if changes are made):
 
 # Deployment
 
-Raw notes of michelle's demo
-- npm install; npx prisma migrate deploy; npx prisma generate
+### Raw notes of michelle's demo
+
+Web Service
+Build Command
+- npm install; npx prisma migrate deploy; npx prisma generate; node prisma/seed_pets.js
 - node index.js
 
-
-
-
-
+Start Command
+- node index.js
 
 
 
